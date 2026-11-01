@@ -114,18 +114,29 @@ async function start() {
     const db = sdk.getDatabase(app);
     const notesRef = sdk.ref(db, `christmasTrees/${treeId}/notes`);
     let connected = false;
-    sdk.onValue(sdk.ref(db, '.info/connected'), snap => {
-      connected = snap.val() === true;
-      setStatus(connected
+    let hasRead = false;
+    let readError = null;
+    function publishConnection() {
+      if (readError) return setStatus({ state: 'error', message: readError.message });
+      setStatus(connected && hasRead
         ? { state: 'online', message: 'Mural compartilhado · atualizado em tempo real' }
         : { state: 'offline', message: 'Conectando ao mural. Aguarde a conexão para publicar.' });
+    }
+    sdk.onValue(sdk.ref(db, '.info/connected'), snap => {
+      connected = snap.val() === true;
+      publishConnection();
     });
     sdk.onValue(sdk.query(notesRef, sdk.orderByChild('createdAt'), sdk.limitToLast(MAX_NOTES)), snap => {
+      hasRead = true;
       emitNotes(Object.entries(snap.val() || {}).map(([id, data]) => ({ ...data, id })));
-    }, error => setStatus({ state: 'error', message: friendlyError(error).message }));
+      publishConnection();
+    }, error => {
+      readError = friendlyError(error);
+      publishConnection();
+    });
     return {
       async create(note) {
-        if (!connected) throw new Error('Aguarde a conexão com o mural para publicar.');
+        if (!connected || !hasRead || readError) throw new Error('Aguarde a conexão com o mural para publicar.');
         const record = sdk.push(notesRef);
         pendingIds.add(record.key);
         try {
@@ -137,7 +148,7 @@ async function start() {
         }
       },
       async remove(id) {
-        if (!connected) throw new Error('Aguarde a conexão com o mural para excluir.');
+        if (!connected || !hasRead || readError) throw new Error('Aguarde a conexão com o mural para excluir.');
         await sdk.remove(sdk.child(notesRef, id));
       }
     };

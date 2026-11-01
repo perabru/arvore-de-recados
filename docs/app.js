@@ -61,7 +61,7 @@ function showNote(id) {
 }
 
 // Positions stay within the actual pine silhouette. A tree can show 54 baubles;
-// every stored message remains accessible in the full message list.
+// The message list shows up to 250 recent records from the selected store.
 function ornamentPositions() {
   const rows = [
     { y: 164, width: 36, count: 2 },
@@ -114,7 +114,7 @@ function renderTree() {
     holder.append(button);
   });
   $('noteCount').textContent = String(notes.length);
-  $('countLabel').textContent = notes.length === 1 ? 'recado pendurado' : 'recados pendurados';
+  $('countLabel').textContent = notes.length >= 250 ? 'recados recentes (até 250)' : notes.length === 1 ? 'recado pendurado' : 'recados pendurados';
   $('emptyHint').hidden = notes.length > 0;
   // Decorative baubles are artwork, while clickable ornaments are real notes.
   document.querySelector('.decorative-baubles').style.opacity = notes.length > 8 ? '.25' : '.85';
