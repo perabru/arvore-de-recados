@@ -1,0 +1,35 @@
+{
+  "christmasTrees": {
+    "public_2026": {
+      "notes": {
+        ".read": true,
+        ".indexOn": ["createdAt"],
+        "$noteId": {
+          ".write": "auth != null && ((!data.exists() && newData.exists() && newData.child('uid').val() === auth.uid) || (data.exists() && !newData.exists() && data.child('uid').val() === auth.uid))",
+          ".validate": "newData.hasChildren(['uid', 'name', 'recipient', 'message', 'color', 'createdAt'])",
+          "uid": {
+            ".validate": "newData.isString() && newData.val() === auth.uid"
+          },
+          "name": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 50"
+          },
+          "recipient": {
+            ".validate": "newData.isString() && newData.val().length <= 50"
+          },
+          "message": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
+          },
+          "color": {
+            ".validate": "newData.isString() && (newData.val() === 'gold' || newData.val() === 'red' || newData.val() === 'green' || newData.val() === 'cream')"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() === now"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

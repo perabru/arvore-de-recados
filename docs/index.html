@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3e9">
+  <meta name="description" content="Um lugar para pendurar carinho. Deixe seu recado de Natal e faça nossa árvore florescer com bons desejos.">
+  <title>Árvore de Recados — um Natal feito de afeto</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23294032' d='m32 4 15 21h-7l14 20H36v15h-8V45H10l14-20h-7z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#recado">Pular para escrever um recado</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Árvore de Recados, início">
+      <svg viewBox="0 0 36 43" aria-hidden="true"><path d="M18 2 28 16h-5l10 14H21v10h-6V30H3l10-14H8Z" fill="currentColor"/><path d="m18 0 1.7 4.1 4.4.4-3.4 2.8 1 4.3L18 9.3l-3.7 2.3 1-4.3-3.4-2.8 4.4-.4Z" fill="#b78a43"/></svg>
+      <span>árvore de <strong>recados</strong><small>UM NATAL FEITO DE AFETO</small></span>
+    </a>
+    <div class="header-actions">
+      <span class="little-greeting">Pequenas palavras. Grandes sentimentos.</span>
+      <button id="shareButton" class="text-button" type="button">Compartilhar árvore <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="intro">
+        <p class="eyebrow"><span aria-hidden="true">✦</span> TEMPO DE ESPALHAR CARINHO</p>
+        <h1 id="heroTitle">Onde os<br>bons desejos<br><em>florescem.</em></h1>
+        <p class="intro-copy">Tem palavras que são um presente.<br>Deixe a sua aqui e ajude a iluminar<br class="desktop-break"> o Natal de alguém.</p>
+        <button id="writeButton" class="primary-button intro-cta" type="button">Pendurar meu recado <span aria-hidden="true">↗</span></button>
+        <div class="intro-note"><span class="little-star" aria-hidden="true">✧</span><p>Cada enfeite guarda uma mensagem.<br><strong>Toque em um deles para ler.</strong></p></div>
+        <div class="intro-decoration" aria-hidden="true"><svg viewBox="0 0 134 36"><path d="M4 29C40 3 72 44 127 8M36 24 24 9m32 16L47 6m27 15L67 4m24 12 3-13M37 24l-9 10m30-10-5 11m24-15 4 12m21-22 13 7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>com carinho, para todos.</span></div>
+      </div>
+
+      <div class="tree-column">
+        <div class="tree-scene" id="treeScene" aria-label="Árvore de Natal com recados interativos">
+          <div class="tree-halo" aria-hidden="true"></div>
+          <span class="scene-spark spark-one" aria-hidden="true">✧</span><span class="scene-spark spark-two" aria-hidden="true">✦</span><span class="scene-spark spark-three" aria-hidden="true">✧</span><span class="scene-spark spark-four" aria-hidden="true">+</span>
+          <svg class="tree-art" viewBox="0 0 500 580" aria-hidden="true">
+            <defs>
+              <linearGradient id="pine" x1="0" x2="1"><stop stop-color="#284d3c"/><stop offset=".6" stop-color="#355c44"/><stop offset="1" stop-color="#264633"/></linearGradient>
+              <linearGradient id="pineMiddle" x1="0" x2="1"><stop stop-color="#315740"/><stop offset="1" stop-color="#42664b"/></linearGradient>
+              <linearGradient id="starGold" x1="0" x2="1" y2="1"><stop stop-color="#e1bd72"/><stop offset="1" stop-color="#aa7937"/></linearGradient>
+              <filter id="treeShadow" x="-30%" y="-20%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+            </defs>
+            <ellipse cx="250" cy="529" rx="143" ry="15" fill="#31422c" opacity=".07" filter="url(#treeShadow)"/>
+            <path d="M235 434h30l6 80q-22 7-42 0Z" fill="#8f6f4a"/><path d="M244 454v53m12-41 2 40" stroke="#b2946a" stroke-width="3" opacity=".5"/>
+            <path d="M250 85C224 135 202 174 167 206q26 9 47 4c-33 45-72 85-107 112q24 9 53 4C122 371 89 411 53 440c48 21 118 35 197 35s149-14 197-35c-36-29-69-69-107-114q29 5 53-4c-35-27-74-67-107-112q21 5 47-4c-35-32-57-71-83-121Z" fill="url(#pine)"/>
+            <path d="M250 85c-26 50-48 89-83 121 47 17 119 17 166 0-35-32-57-71-83-121Z" fill="url(#pineMiddle)"/>
+            <path d="M214 210c-33 45-72 85-107 112 70 24 216 24 286 0-35-27-74-67-107-112-20 8-52 8-72 0Z" fill="#31543e"/>
+            <path d="M169 206q80 26 162 0M110 322q140 34 280 0" fill="none" stroke="#648063" stroke-width="1.4" opacity=".55"/>
+            <path d="M217 157c40 24 50 34 88 35M178 226c41 29 90 48 143 55M136 312c54 35 126 63 216 73M94 409c79 35 177 48 274 36" fill="none" stroke="#d0ab62" stroke-width="2" opacity=".65" stroke-linecap="round"/>
+            <g fill="#fae3a1" class="fairy-lights"><circle cx="222" cy="161" r="3"/><circle cx="259" cy="181" r="3"/><circle cx="297" cy="191" r="3"/><circle cx="186" cy="232" r="3"/><circle cx="229" cy="257" r="3"/><circle cx="275" cy="273" r="3"/><circle cx="316" cy="280" r="3"/><circle cx="145" cy="318" r="3"/><circle cx="192" cy="341" r="3"/><circle cx="244" cy="361" r="3"/><circle cx="296" cy="376" r="3"/><circle cx="344" cy="384" r="3"/><circle cx="107" cy="414" r="3"/><circle cx="158" cy="431" r="3"/><circle cx="214" cy="442" r="3"/><circle cx="270" cy="448" r="3"/><circle cx="326" cy="448" r="3"/><circle cx="362" cy="445" r="3"/></g>
+            <path d="m250 40 11 24 26 3-19 18 5 26-23-13-23 13 5-26-19-18 26-3Z" fill="url(#starGold)"/><path d="m250 40 1 39 22 32-5-26 19-18-26-3Z" fill="#d8b266" opacity=".7"/>
+            <g class="decorative-baubles"><circle cx="238" cy="211" r="10" fill="#b88945"/><circle cx="299" cy="310" r="10" fill="#b47164"/><circle cx="178" cy="366" r="10" fill="#c7b582"/><circle cx="257" cy="418" r="11" fill="#a65a4d"/><circle cx="348" cy="420" r="10" fill="#be9858"/><path d="M235 198h6m55 99h6m-127 56h6m73 51h6m85 3h6" stroke="#e1c79a" stroke-width="3" stroke-linecap="round"/></g>
+            <g transform="translate(115 486)"><path d="M0 0h54v40H0Z" fill="#b16c5d"/><path d="M24 0h7v40h-7Z" fill="#e3c391"/><path d="M-3 0h60v8H-3Z" fill="#bd7a69"/><path d="M27 0C5-22 9-25 19-19L27 0c24-23 25-27 13-23Z" fill="none" stroke="#cfad79" stroke-width="3"/></g>
+            <g transform="translate(317 498)"><path d="M0 0h55v30H0Z" fill="#ddc79f"/><path d="M24 0h7v30h-7Z" fill="#7d977c"/><path d="M-3 0h61v7H-3Z" fill="#e4d0ae"/><path d="M27 0C8-18 7-21 17-19L27 0c23-17 23-21 12-19Z" fill="none" stroke="#789074" stroke-width="3"/></g>
+          </svg>
+          <div id="ornaments" class="ornaments"></div>
+          <div id="emptyHint" class="empty-hint"><span aria-hidden="true">✦</span> O primeiro recado pode ser o seu.</div>
+        </div>
+        <div class="tree-caption"><span class="caption-rule"></span><span><strong id="noteCount">0</strong> <span id="countLabel">recados pendurados</span></span><span class="caption-rule"></span></div>
+        <button id="browseButton" class="text-button browse-button" type="button">Ler todos os recados <span aria-hidden="true">→</span></button>
+      </div>
+
+      <aside class="form-card" id="recado" aria-labelledby="formTitle">
+        <div class="card-topline"><span>UM PRESENTE EM PALAVRAS</span><svg width="29" height="29" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 13h22v16H5Zm-2-5h26v6H3Zm13 0v21M16 8C4-5 2 9 16 8c14 1 12-13 0 0Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></div>
+        <h2 id="formTitle">Deixe seu carinho.</h2>
+        <p class="form-subtitle">Uma mensagem sua. Um Natal mais bonito.</p>
+        <form id="noteForm">
+          <label for="name">Seu nome <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" placeholder="Como você se chama?" maxlength="50" autocomplete="given-name" required>
+          <label for="recipient">Para quem? <span class="optional">(se quiser)</span></label>
+          <input id="recipient" name="recipient" placeholder="Alguém especial, ou todo mundo" maxlength="50" autocomplete="off">
+          <div class="message-label"><label for="message">Seu recado <span aria-hidden="true">*</span></label><span id="characterCount">0 / 300</span></div>
+          <textarea id="message" name="message" placeholder="Escreva um desejo, uma lembrança ou um pouquinho de amor…" maxlength="300" rows="4" required></textarea>
+          <fieldset class="color-field"><legend>Escolha a cor do seu enfeite</legend><div class="color-options">
+            <label class="color-option gold" title="Dourado"><input type="radio" name="color" value="gold" checked><span></span><span class="sr-only">Dourado</span></label>
+            <label class="color-option red" title="Vermelho"><input type="radio" name="color" value="red"><span></span><span class="sr-only">Vermelho</span></label>
+            <label class="color-option green" title="Verde"><input type="radio" name="color" value="green"><span></span><span class="sr-only">Verde</span></label>
+            <label class="color-option cream" title="Marfim"><input type="radio" name="color" value="cream"><span></span><span class="sr-only">Marfim</span></label>
+          </div></fieldset>
+          <p class="public-note" id="privacyNote">Seu recado ficará visível para todos. Compartilhe carinho e evite informações pessoais.</p>
+          <button class="primary-button submit-button" id="submitButton" type="submit"><span id="submitLabel">Pendurar na árvore</span><span aria-hidden="true">✦</span></button>
+          <p id="formFeedback" class="form-feedback" role="status" aria-live="polite"></p>
+        </form>
+        <div id="connectionStatus" class="connection-status" role="status"><span></span><span id="statusText">Conectando à nossa árvore…</span></div>
+      </aside>
+    </section>
+
+    <section class="how-it-works" aria-label="Como participar">
+      <p class="how-intro">A magia é simples.</p>
+      <div><span class="step-number">01</span><p><strong>Escreva com o coração.</strong><span>Um desejo, uma gratidão, um feliz Natal.</span></p></div>
+      <div><span class="step-number">02</span><p><strong>Pendure seu carinho.</strong><span>Seu recado vira um enfeite na árvore.</span></p></div>
+      <div><span class="step-number">03</span><p><strong>Espalhe a alegria.</strong><span>Convide alguém para fazer parte.</span></p></div>
+    </section>
+  </main>
+  <footer><p>Que não faltem motivos para estar perto. <span aria-hidden="true">✧</span></p><span>FEITO DE AFETO, COMPARTILHADO COM TODOS.</span></footer>
+
+  <dialog id="noteDialog" class="note-dialog" aria-labelledby="dialogName"><button type="button" class="close-button" data-close="noteDialog" aria-label="Fechar recado">×</button><span class="dialog-star" aria-hidden="true">✦</span><p class="eyebrow">UM CARINHO PENDURADO AQUI</p><p id="dialogRecipient" class="dialog-recipient"></p><blockquote id="dialogMessage"></blockquote><p class="dialog-signature">Com carinho, <strong id="dialogName"></strong></p><div class="dialog-bottom"><time id="dialogDate"></time><button id="deleteButton" type="button" class="delete-button" hidden>Excluir meu recado</button></div><p id="deleteFeedback" class="form-feedback" role="status"></p></dialog>
+  <dialog id="allNotesDialog" class="all-notes-dialog" aria-labelledby="allNotesTitle"><button type="button" class="close-button" data-close="allNotesDialog" aria-label="Fechar lista de recados">×</button><p class="eyebrow">CADA PALAVRA, UM PRESENTE</p><h2 id="allNotesTitle">Carinho para ler<br><em>e guardar.</em></h2><label class="sr-only" for="searchNotes">Buscar nos recados</label><input id="searchNotes" type="search" placeholder="Buscar por nome ou mensagem…"><div id="allNotesList" class="all-notes-list"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

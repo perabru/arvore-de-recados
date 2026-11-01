@@ -1,0 +1,29 @@
+// FRAGMENT ONLY: merge this exact match block INSIDE the existing
+// service cloud.firestore { match /databases/{database}/documents { ... } }
+// block. Preserve existing rules. Do not replace the project's ruleset.
+// Other broad allow rules must not overlap this namespace.
+match /christmas_trees/public_2026/notes/{noteId} {
+  allow read: if true;
+  allow create: if request.auth != null
+    && request.resource.data.keys().hasAll([
+      'uid', 'name', 'recipient', 'message', 'color', 'createdAt'
+    ])
+    && request.resource.data.keys().hasOnly([
+      'uid', 'name', 'recipient', 'message', 'color', 'createdAt'
+    ])
+    && request.resource.data.uid is string
+    && request.resource.data.uid == request.auth.uid
+    && request.resource.data.name is string
+    && request.resource.data.name.size() > 0
+    && request.resource.data.name.size() <= 50
+    && request.resource.data.recipient is string
+    && request.resource.data.recipient.size() <= 50
+    && request.resource.data.message is string
+    && request.resource.data.message.size() > 0
+    && request.resource.data.message.size() <= 300
+    && request.resource.data.color in ['gold', 'red', 'green', 'cream']
+    && request.resource.data.createdAt is timestamp
+    && request.resource.data.createdAt == request.time;
+  allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+  allow update: if false;
+}
